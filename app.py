@@ -70,8 +70,6 @@ username.send_keys(name)
 password.send_keys(pword)
 loginButton.click()
 
-#---- Login Successful
-
 try:
     framesets = WebDriverWait(driver, 15).until(EC.presence_of_all_elements_located((By.TAG_NAME, "frameset")))
     # print(framesets[1].get_attribute("innerHTML"))
