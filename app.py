@@ -89,9 +89,6 @@ try:
         courseLinks.append(courseLink)
 
     for courseTitle, courseLink in zip(courses, courseLinks):
-        # driver.execute_script("arguments[0].target='_self';", courseHref)
-        # courseLink.click()
-
         driver.execute_script("window.open()")
         time.sleep(1)
         # Switch to the newly opened tab
@@ -130,6 +127,7 @@ try:
         while comment=='':
             comment = input("Comment and suggestions: ").strip()
 
+
         # -------- Page 1
         radios = []
         nextButton = ''
@@ -141,7 +139,6 @@ try:
             if input.get_attribute("name") == 'Next':
                 nextButton = input
                 # print("next button found")
-        # print(len(radios))
 
         for radio in radios:
             onclick = radio.get_attribute("onclick")
@@ -178,8 +175,6 @@ try:
         time.sleep(2)
         driver.switch_to.window(root_window)
         # break
-
-
 
 except TimeoutException:
     print("No 'instructor_survey' table found")
