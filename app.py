@@ -66,6 +66,7 @@ while pword=='':
     pword = input("Enter Password: ").strip()
 
 print("Attempting to login...")
+time.sleep(3)
 username.send_keys(name)
 password.send_keys(pword)
 loginButton.click()
@@ -79,10 +80,47 @@ try:
     try:
         # Navigating to the 'instructor_survey' section
         instr_surv_table_id = "//table[@id='instructor_survey']"
-        instr_surv_table = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, instr_surv_table_id)))
+        instr_surv_table = WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.XPATH, instr_surv_table_id)))
         print("'instructor_survey' table found!")
         source_code = instr_surv_table.get_attribute("innerHTML")
         # print(source_code)
+
+        sameReviewForAll = False
+        sameReviewRaw = ''
+        while sameReviewRaw=='':
+            sameReviewRaw = input("Same review for all instructors? (y/n) : ").strip()
+            if sameReviewRaw!='y' and sameReviewRaw!='n' and sameReviewRaw!='Y' and sameReviewRaw!='N':
+                sameReviewRaw = ''
+                continue
+            if sameReviewRaw=='Y' or sameReviewRaw=='y':
+                sameReviewForAll = True
+                break
+            if sameReviewRaw=='N' or sameReviewRaw=='n':
+                sameReviewForAll = False
+                break
+
+        def representsInt(s):
+            try: 
+                int(s)
+                return True
+            except ValueError:
+                return False
+
+        if sameReviewForAll:
+            reviewPoint = 0
+            while (reviewPoint==0):
+                reviewPoint = input("What points do you want to give (1-5): ")
+                if representsInt(reviewPoint):
+                    reviewPoint = int(reviewPoint)
+                    if not (1<=reviewPoint<=5):
+                        reviewPoint = 0
+                else:
+                    reviewPoint = 0
+            # print("Your selected point: "+str(reviewPoint))
+
+            comment = ''
+            while comment=='':
+                comment = input("Comment and suggestions: ").strip()
 
         coursesHref = driver.find_elements_by_xpath("//*[@id='instructor_survey']/tbody/tr/td/a")
 
@@ -119,29 +157,21 @@ try:
             print("Course: "+courseTitle+" - Instructor: "+instructor)
             print("Points criteria : \n 5) Strongly Agree \n 4) Agree \n 3) Neutral \n 2) Disagree \n 1) Strongly Disagree")
 
-            def representsInt(s):
-                try: 
-                    int(s)
-                    return True
-                except ValueError:
-                    return False
-
-            reviewPoint = 0
-            while (reviewPoint==0):
-                reviewPoint = input("What points do you want to give (1-5): ")
-                if representsInt(reviewPoint):
-                    reviewPoint = int(reviewPoint)
-                    if not (1<=reviewPoint<=5):
+            if not sameReviewForAll:
+                reviewPoint = 0
+                while (reviewPoint==0):
+                    reviewPoint = input("What points do you want to give (1-5): ")
+                    if representsInt(reviewPoint):
+                        reviewPoint = int(reviewPoint)
+                        if not (1<=reviewPoint<=5):
+                            reviewPoint = 0
+                    else:
                         reviewPoint = 0
-                else:
-                    reviewPoint = 0
-            
-            # print("Your selected point: "+str(reviewPoint))
+                # print("Your selected point: "+str(reviewPoint))
 
-            comment = ''
-            while comment=='':
-                comment = input("Comment and suggestions: ").strip()
-
+                comment = ''
+                while comment=='':
+                    comment = input("Comment and suggestions: ").strip()
 
             # -------- Page 1
             radios = []
