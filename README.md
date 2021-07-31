@@ -19,3 +19,6 @@ source env/Scripts/activate
 pip install -r requirements.txt
 ```
 4. Finally run app.py!
+```
+python app.py
+```
