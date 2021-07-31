@@ -90,9 +90,7 @@ try:
 
     for courseTitle, courseLink in zip(courses, courseLinks):
         # driver.execute_script("arguments[0].target='_self';", courseHref)
-        # courseHref.click()
-        # window_after = driver.window_handles[1]
-        # driver.switch_to.window(window_after)
+        # courseLink.click()
 
         driver.execute_script("window.open()")
         time.sleep(1)
