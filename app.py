@@ -114,7 +114,7 @@ try:
             except ValueError:
                 return False
 
-        reviewPoint = 3
+        reviewPoint = 0
         while (reviewPoint==0):
             reviewPoint = input("What points do you want to give (1-5): ")
             if representsInt(reviewPoint):
@@ -126,7 +126,7 @@ try:
         
         # print("Your selected point: "+str(reviewPoint))
 
-        comment = 'good'
+        comment = ''
         while comment=='':
             comment = input("Comment and suggestions: ").strip()
 
