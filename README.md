@@ -1,13 +1,11 @@
 # EDU-Instructor-Survey-Automation
 
-## A Python shell program to help automate East Delta University instructor survey
-
 Main requirements: Python v3.2+.
 
-Please kindly do the following to setup the program:
-1. Please install python first if you don't already have it installed
+Please do the following to setup the program:
+1. Please install 'Python' first if you don't already have it installed
 
-2. After pulling project from github, open terminal and cd into project directory
+2. After pulling this repository from github, open terminal and cd into project directory
 ```
 cd project_directory
 ```
