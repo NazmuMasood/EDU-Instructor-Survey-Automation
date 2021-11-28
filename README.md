@@ -20,8 +20,12 @@ issue: bash: env/Scripts/activate: No such file or directorybash: env/Scripts/ac
 
 ```
 run: env/bin/activate
-`````
+```
 4. Finally run app.py!
 ```
 python app.py
+```
+or
+```
+python3 app.py
 ```
