@@ -16,6 +16,11 @@ python -m venv env
 source env/Scripts/activate
 pip install -r requirements.txt
 ```
+issue: bash: env/Scripts/activate: No such file or directorybash: env/Scripts/activate: No such file or directory
+
+```
+run: env/bin/activate
+`````
 4. Finally run app.py!
 ```
 python app.py
